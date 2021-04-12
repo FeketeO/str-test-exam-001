@@ -35,21 +35,50 @@ const cityList = [{
     area: 35
 }];
 
+/**
+ * 
+ * @param {City[]} list 
+ * @param {Number} population 
+ * @param {Number} area 
+ * @returns all cities where population is lower than the specified and the area
+ * is greater then the specified.
+ */
 const cityFilter = (list, population, area) => {
-    return null;
+    // const output = [];
+    // for (let i = 0; i < list.length; i++) {
+    //     if (list[i].population < population && list[i].area > area) {
+    //         output.push(list[i].name);
+    //     }
+    // }
+    // return output;
+
+    // knife.sgs
+    return list
+        .filter(city => city.population < population && city.area > area)
+        .map(item => item.name);
 };
 
 const citySorter = (list, key) => {
-    return null;
+    // petern1953
+    // return list.sort( (a, b) => a[key] > b[key] ? 1 : -1 );
+
+    // knife.sgs
+    return list.sort((a, b) => {
+        if (typeof a[key] === 'number' && typeof b[key] === 'number') {
+            return a[key] - b[key];
+        } else {
+            return String(a[key]).toLowerCase().localeCompare(String(b[key]).toLowerCase());
+        }
+    });
 };
 
 const citySlicer = (list, limit) => {
-    return null;
+    return citySorter(list, 'name').slice(0, limit);
 };
 
 if (typeof module !== 'undefined') {
-    module.exports = { 
-        cityList, 
+    module.exports = {
+        cityList,
         cityFilter,
         citySorter,
         citySlicer
