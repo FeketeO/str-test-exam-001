@@ -8,7 +8,7 @@ import { Product } from '../model/product';
 })
 export class ProductService {
 
-  endPoint: string = `https://nettuts.hu/jms/cherryApp/products`;
+  endPoint: string = `https://nettuts.hu/jms/FeketeO/products`;
 
   constructor(
     private http: HttpClient
