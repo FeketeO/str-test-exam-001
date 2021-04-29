@@ -43,37 +43,27 @@ const cityList = [{
  * @returns all cities where population is lower than the specified and the area
  * is greater then the specified.
  */
-const cityFilter = (list, population, area) => {
-    // const output = [];
-    // for (let i = 0; i < list.length; i++) {
-    //     if (list[i].population < population && list[i].area > area) {
-    //         output.push(list[i].name);
-    //     }
-    // }
-    // return output;
-
-    // knife.sgs
-    return list
-        .filter(city => city.population < population && city.area > area)
-        .map(item => item.name);
+const cityFilter = (cityList, population, area) => {
+   return cityList.filter(item => item.population < population && item.area > area).map(item => item.name)
+    
 };
 
-const citySorter = (list, key) => {
-    // petern1953
-    // return list.sort( (a, b) => a[key] > b[key] ? 1 : -1 );
-
-    // knife.sgs
-    return list.sort((a, b) => {
-        if (typeof a[key] === 'number' && typeof b[key] === 'number') {
-            return a[key] - b[key];
-        } else {
-            return String(a[key]).toLowerCase().localeCompare(String(b[key]).toLowerCase());
+const citySorter = (cityList, key) => {
+    return cityList.sort( (a,b) => {
+        if (typeof a[key] === 'number' && typeof b[key] === 'number' ) {
+            return a[key] - b[key]
         }
-    });
+        else
+        {
+            return String(a[key]).toLowerCase().localeCompare(String(b[key]).toLowerCase())
+
+        }
+    })
 };
 
-const citySlicer = (list, limit) => {
-    return citySorter(list, 'name').slice(0, limit);
+const citySlicer = (cityList, limit) => {
+    return citySorter(cityList, 'name').slice(0, limit)
+    
 };
 
 if (typeof module !== 'undefined') {
